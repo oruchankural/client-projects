@@ -17,8 +17,8 @@ fileInput.onchange = ({ target }) => {
         }
     }
     let xhr = new XMLHttpRequest();
+    // method via server:node.js port
     xhr.open("POST", "http://127.0.0.1:3000/uploads");
-
     xhr.upload.addEventListener("progress", ({ loaded, total }) => {
         let fileLoaded = Math.floor((loaded / total) * 100);
         let fileTotal = Math.floor(total / 1000);
@@ -39,7 +39,6 @@ fileInput.onchange = ({ target }) => {
         uploadedArea.classList.add("onprogress");
         progressArea.innerHTML += progressHTML;
     });
-
     xhr.onload = () => {
         if (xhr.status === 200) {
             let uploadedHTML = `<li class="row">

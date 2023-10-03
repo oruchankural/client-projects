@@ -12,7 +12,6 @@ app.post('/uploads', (req, res) => {
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
     }
-
     const uploadedFile = req.files.file;
     const fileName = `${Date.now()}_${uploadedFile.name}`;
     const uploadPath = __dirname + '/uploads/' + fileName;
@@ -24,9 +23,8 @@ app.post('/uploads', (req, res) => {
             }
             res.send('File uploaded!');
         });
-    }, 2000);
+    }, 3000);
 });
-
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
